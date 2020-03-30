@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ARRAYS</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        // .map(), .reduce() y .filter() no mutan el array original, retornan un nuevo array
+        // .map() retorna un nuevo array de la misma longitud que el original resultante del retorno de la función aplicada a cada mapeo
+
+
+
+
+        const ages = [22, 34, 2, 5, 34]
+        const agesDuplicated = ages.map(elm => elm * 2)
+
+        console.log('El array original permanece inmutable', ages)
+        console.log('El array nuevo:', agesDuplicated)
+
+
+
+
+
+
+        const drinks = ['coca-cola', 'kas', 'monster', 'cacaolat']
+        const capitalizeDrinks = drinks.map(elm => {
+            const firstLetter = elm.charAt(0).toUpperCase()
+            const rest = elm.substring(1)
+            const result = firstLetter + rest
+            return result
+        })
+
+        console.log(capitalizeDrinks)
+
+
+
+
+
+        const students = [
+            {
+                name: "Tony Parker",
+                firstProject: 80,
+                secondProject: 75,
+                finalExam: 90
+            },
+            {
+                name: "Marc Barchini",
+                firstProject: 84,
+                secondProject: 65,
+                finalExam: 65
+            },
+            {
+                name: "Claudia Lopez",
+                firstProject: 45,
+                secondProject: 95,
+                finalExam: 99
+            }
+        ]
+
+
+        // // Array con  sólo las notas
+        // const finalGrades = students.map(elm => {
+        //     const projectsAvg = (elm.firstProject + elm.secondProject) / 2
+        //     const finalResult = (elm.finalExam * .6) + (projectsAvg * .4)
+        //     return finalResult
+        // })
+
+
+        // // Array de objetos con el nombre y la nota
+        // const finalGrades = students.map(elm => {
+        //     const projectsAvg = (elm.firstProject + elm.secondProject) / 2
+        //     const finalResult = (elm.finalExam * .6) + (projectsAvg * .4)
+        //     const objResult = { name: elm.name, finalResult: finalResult }
+        //     return objResult
+        // })
+
+
+
+        // // Array de objetods con la información inicial + finalGrades
+        const finalGrades = students.map(elm => {
+            const projectsAvg = (elm.firstProject + elm.secondProject) / 2
+            const finalResult = (elm.finalExam * .6) + (projectsAvg * .4)
+            // const objResult = {
+            //     name: elm.name,
+            //     firstProject: elm.firstProject,
+            //     secondProject: elm.secondProject,
+            //     finalExam: elm.finalExam,
+            //     finalResult: finalResult
+            // }
+
+            const objResult = { ...elm, finalResult: finalResult }      // alternativa pro: spread operator (operador de propagación) saca copias de objetos
+            return objResult
+        })
+
+        console.log('Los resultados finales son: ', finalGrades)
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS</title>
+</head>
+
+<body>
+
+    <script>
+
+        const cities = ['Madrid', 'Bilbao', 'Gijón']
+
+        // // OJO!! NO ES UNA COPIA!! (paso por referencia)
+        const citiesCopy = cities
+        citiesCopy[2] = 'Magaluf'
+
+        // El operaddor de propagación crea copias de arrays y de objetos
+        const citiesRealCopy = [...cities]
+        citiesRealCopy[2] = 'Amsterdam'
+
+        console.log('La copia falsa del array es', citiesCopy)
+        console.log('La copia real del array es', citiesRealCopy)
+        console.log('El array original es', cities)
+
+
+
+        // Lo mismo con objetos
+        const drink = {
+            name: 'Kas',
+            sugar: 27
+        }
+
+        const drinkCopy = { ...drink }
+        drinkCopy.sugar = 20
+
+        console.log('La copia falsa del objeto es', drinkCopy)
+        console.log('El objeto original es', drink)
+
+    </script>
+</body>
+
+</html>

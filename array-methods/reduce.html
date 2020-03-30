@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Js</title>
+</head>
+
+<body>
+    <script>
+
+        // .map(), .reduce() y .filter() no mutan el array original
+
+        // .reduce() obtiene un valor final fruto de computar un acumulado en cada iteración sobre el array original
+
+        // El valor inicial del acumulador es la primera posición del array
+        // El valor del acumulador en las siguientes iteraciones es el retorno de la anterior iteración 
+
+
+        const numbers = [2, 4, 10, 8]
+        // const sumatory = numbers.reduce((acc, elm) => {
+        //     console.log('El valor del acumulador en esta iteración es', acc)
+        //     console.log('El valor del elm en esta iteración es', elm)
+        //     return acc + elm
+        // })
+
+        const sumatory = numbers.reduce((acc, elm) => acc + elm)
+        console.log('El sumatorio es', sumatory)
+
+
+
+
+
+        // El segundo argumento (opcional) es el valor inicial que tomaría el acumulador, en vez de la primera posición del array
+        const numbers2 = [2, 4, 10, 8]
+        const sumatory2 = numbers2.reduce((acc, elm) => acc + elm, 100) // <= OJO AL 100
+        console.log('El sumatorio comenzando en 100 es', sumatory2)
+
+
+
+
+
+        const words = ["This", "is", "one", "big", "string"]
+        const fullSentence = words.reduce((acc, elm) => acc + elm)
+        console.log('La frase compuesta es', fullSentence)
+
+
+
+
+
+        // // Acumular valores procedentes de un array de objetos supone un conflicto con el acumulador.
+        const people = [
+            { name: "Candice", age: 25 },
+            { name: "Tammy", age: 30 },
+            { name: "Allen", age: 49 },
+            { name: "Nettie", age: 21 },
+            { name: "Stuart", age: 17 }
+        ]
+
+
+        // Por defecto, el acumulador toma como valor para la primera iteración la primera posición del array  (el objeto completo) retornando "[object Object]30492117"
+        // const sumAges = people.reduce((acc, elm) => acc + elm.age)
+
+        // Cambiamos el valor inicial del acumulador:
+        const sumAges = people.reduce((acc, elm) => acc + elm.age, 0) // <= OJO: COMIENZA EN 0
+
+        console.log('La media de edades es', sumAges / people.length)
+
+
+
+
+
+
+
+        const places = [
+            {
+                title: "Awesome Suite 20' away from la Rambla",
+                price: 200,
+                type: "Private Room",
+                pool: true,
+                garage: false
+            },
+            {
+                title: "Private apartment",
+                price: 190,
+                type: "Entire Place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "Apartment with awesome views",
+                price: 400,
+                type: "Entire Place",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Apartment in la Rambla",
+                price: 150,
+                type: "Private Room",
+                pool: false,
+                garage: true
+            },
+            {
+                title: "Comfortable place in Barcelona´s center",
+                price: 390,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "Room near Sagrada Familia",
+                price: 170,
+                type: "Private Room",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Great house next to Camp Nou",
+                price: 140,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "New apartment with 2 beds",
+                price: 2000,
+                type: "Entire place",
+                pool: false,
+                garage: true
+            },
+            {
+                title: "Awesome Suite",
+                price: 230,
+                type: "Private Room",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Apartment 10' from la Rambla",
+                price: 930,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            }
+        ]
+
+
+        // const pricesSum = places.reduce((acc, elm) => acc + elm.price)   // ERROR!: Toma como valor de la rpimera iteración el objeto completo
+        const pricesSum = places.reduce((acc, elm) => acc + elm.price, 0)
+        console.log('El sumatorio de precios es', pricesSum, 'y la media es', pricesSum / places.length)
+
+
+
+
+        // Otro ejemplo más
+        const people2 = [
+            { name: "Candice", money: 25, extra: 2 },
+            { name: "Tammy", money: 30, extra: 3 },
+            { name: "Allen", money: 49, extra: 4 },
+            { name: "Nettie", money: 21, extra: 2 },
+            { name: "Stuart", money: 17, extra: 8 }
+        ]
+
+        const sumMoney = people2.reduce((acc, elm) => {
+            return acc + elm.money
+        }, 0)
+
+        const sumMoneyExtras = people2.reduce((acc, elm) => {
+            return acc + elm.money + elm.extra
+        }, 0)
+
+        console.log('el sumatorio de las pagas es', sumMoney)
+        console.log('en vacaciones reciben más pasta!', sumMoneyExtras)
+
+
+
+
+        // Más
+        const product = {
+            name: "AmazonBasics Apple Certified Lightning to USB Cable",
+            price: 7.99,
+            manufacter: "Amazon",
+            reviews:
+                [
+                    {
+                        user: "Pavel Nedved",
+                        comments: "It was really usefull, strongly recommended",
+                        rate: 4,
+                        active: true
+                    },
+                    {
+                        user: "Alvaro Trezeguet",
+                        comments: "It lasted 2 days",
+                        rate: 1,
+                        active: true
+                    },
+                    {
+                        user: "David Recoba",
+                        comments: "Awesome",
+                        rate: 5,
+                        active: false
+                    },
+                    {
+                        user: "Jose Romero",
+                        comments: "Good value for money",
+                        rate: 4,
+                        active: true
+                    },
+                    {
+                        user: "Antonio Cano",
+                        comments: "It broked really fast",
+                        rate: 2,
+                        active: false
+                    },
+                ]
+        }
+
+        const sumReviews = product.reviews.reduce((acc, elm) => acc + elm.rate, 0)
+        console.log("Las notas medias de todos los usuarios son", sumReviews / product.reviews.length)
+
+        // Estos métodos son concatenables 
+        const activeUsersSumReviews =
+            product.reviews
+                .filter(elm => elm.active)
+                .reduce((acc, elm) => acc + elm.rate, 0)
+
+        console.log("Las notas medias de todos los usuarios ACTIVOS son", activeUsersSumReviews / product.reviews.filter(elm => elm.active).length)
+
+    </script>
+</body>
+
+</html>

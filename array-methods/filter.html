@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS</title>
+</head>
+
+<body>
+    <script>
+
+        // .map(), .reduce() y .filter() no mutan el array original
+
+        // .filter() retorna un nuevo array de la misma longitud o inferior que el original
+        // La función argumentada debe retornar truthy (el elemento pasa al nuevo array) o falsie (el elemento no pasa al nuevo array)
+
+
+
+        const values = [1, 4, 2, 5, 6, 43, 45, 6, 3, 5, 56, 3, 5, 6, 34, 5, 59, 58, 7, 3, 5]
+
+
+        // // Filtrado con .forEach()
+        //const odd = []
+        // values.forEach(elm => {
+        //     if (elm % 2 === 0) {
+        //         odd.push(elm)
+        //     }
+        // })
+
+        // console.log('Los pares: ', odd)
+
+
+
+
+        // // versión 1
+        // const odd = values.filter(elm => {
+        //     if (elm % 2 === 0) {
+        //         return true
+        //     }
+        // })
+        // console.log('Los pares: ', odd)
+
+
+
+        // // versión 2
+        // const odd = values.filter(elm => {
+        //     return (elm % 2 === 0)
+        // })
+        // console.log('Los pares: ', odd)
+
+
+
+        // versión 3
+        const odd = values.filter(elm => elm % 2 === 0)
+        console.log('Los pares: ', odd)
+
+
+
+
+        // Otros ejemplos
+        const greaterThan10 = values.filter(elm => elm > 10)
+        const between15and20 = values.filter(elm => elm > 15 && elm < 20)
+
+
+
+
+
+        const people = [
+            { name: "Candice", age: 25 },
+            { name: "Tammy", age: 30 },
+            { name: "Allen", age: 20 },
+            { name: "Nettie", age: 21 },
+            { name: "Stuart", age: 17 },
+            { name: "Bill", age: 19 }
+        ]
+
+        const canDrink = people.filter(elm => elm.age >= 21)
+        console.log('Un total de ', canDrink.length, 'personas pueden beber:', canDrink)
+
+
+
+
+
+        const places = [
+            {
+                title: "Awesome Suite 20' away from la Rambla",
+                price: 200,
+                type: "Private Room",
+                pool: true,
+                garage: false
+            },
+            {
+                title: "Private apartment",
+                price: 190,
+                type: "Entire Place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "Apartment with awesome views",
+                price: 400,
+                type: "Entire Place",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Apartment in la Rambla",
+                price: 150,
+                type: "Private Room",
+                pool: false,
+                garage: true
+            },
+            {
+                title: "Comfortable place in Barcelona´s center",
+                price: 390,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "Room near Sagrada Familia",
+                price: 170,
+                type: "Private Room",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Great house next to Camp Nou",
+                price: 140,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "New apartment with 2 beds",
+                price: 2000,
+                type: "Entire place",
+                pool: false,
+                garage: true
+            },
+            {
+                title: "Awesome Suite",
+                price: 230,
+                type: "Private Room",
+                pool: false,
+                garage: false
+            },
+            {
+                title: "Apartment 10' from la Rambla",
+                price: 930,
+                type: "Entire place",
+                pool: true,
+                garage: true
+            }
+        ]
+
+
+        const cheapHouses = places.filter(elm => elm.price < 500)
+        console.log('las casas baratas son', cheapHouses)
+
+        const garageHouses = places.filter(elm => elm.garage)
+        console.log('las casas con garage son', garageHouses)
+
+        const deluxeHouses = places.filter(elm => elm.garage && elm.pool)
+        console.log('las casas buenas son', deluxeHouses)
+
+        const cheapApartments = places.filter(elm => {
+            if (elm.price < 1000 && elm.title.toLowerCase().includes('apartment')) {
+                return true
+            }
+        })
+        console.log('Los apartamentos baratos son:', cheapApartments)
+
+
+    </script>
+</body>
+
+</html>
