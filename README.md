@@ -1,5 +1,9 @@
 # week1_day5
 
+Vídeo de la clase disponible en [este enlace](https://zoom.us/rec/share/xd1vIrWq1zxOS5HH1UvTaow9Q57Gaaa81ykX8_YMzqdgqsN1jgHIpbptl1AQjnY)
+
+## Contenidos
+
 > JS | Data structures
 >
 > JS | Array advanced methods: `.map()`, `.filter()`, `.reduce()`, `.reverse()` and `.sort()`
